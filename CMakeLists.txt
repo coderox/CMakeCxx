@@ -4,7 +4,7 @@ project(${CURRENT_TARGET_NAME} CXX)
 
 include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/"
-    "${CMAKE_CURRENT_SOURCE_DIR}/Generated"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
 )
 
 file(GLOB COMMON_SOURCES 
