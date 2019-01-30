@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.10)
+set(CURRENT_TARGET_NAME CMakeCxx)
+project(${CURRENT_TARGET_NAME} CXX)
+
+include_directories(
+    "${CMAKE_CURRENT_SOURCE_DIR}/"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Generated"
+)
+
+file(GLOB COMMON_SOURCES 
+    "src/*.h" 
+    "src/*.cpp"
+)
+
+add_library(${CURRENT_TARGET_NAME} SHARED 
+            ${COMMON_SOURCES} 
+)
+
+set_property(TARGET ${CURRENT_TARGET_NAME} PROPERTY VS_WINRT_COMPONENT TRUE)
+set_property(TARGET ${CURRENT_TARGET_NAME} PROPERTY VS_GLOBAL_ROOTNAMESPACE ${CURRENT_TARGET_NAME})
+
+set_target_properties(${CURRENT_TARGET_NAME} PROPERTIES COMPILE_FLAGS "/Yupch.h")
+set_source_files_properties(src/pch.cpp PROPERTIES COMPILE_FLAGS "/Ycpch.h")
+
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${CURRENT_TARGET_NAME})
