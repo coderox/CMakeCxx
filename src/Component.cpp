@@ -1,13 +1,10 @@
 ﻿#include "pch.h"
 #include "Component.h"
 
-using namespace CMakeCxx;
-using namespace Platform;
-
-Component::Component() 
+namespace winrt::CmakeCxx::implementation
 {
-}
-
-String^ Component::Echo(String^ message){
-    return L"Hello" + message;
+	hstring Component::Echo(hstring const& message)
+	{
+		return L"Hello" + message;
+	}
 }
